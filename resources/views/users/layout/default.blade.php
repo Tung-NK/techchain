@@ -42,8 +42,6 @@
 
     @yield('content')
 
-    @yield('detail')
-
     @include('users.layout.footer')
 
     <!-- JS

@@ -89,7 +89,7 @@
                     <div class="d-flex flex-column align-items-start">
                         <div class="d-flex align-items-center mb-2">
                             <div class="symbol symbol-35px symbol-circle">
-                                <img alt="Pic" src="assets_admin/media/avatars/300-25.jpg" />
+                                <img alt="Pic" src="{{asset('assets_admin/media/avatars/300-25.jpg')}}" />
                             </div>
                             <div class="ms-3">
                                 <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian
@@ -112,7 +112,7 @@
                                 <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary ms-1">You</a>
                             </div>
                             <div class="symbol symbol-35px symbol-circle">
-                                <img alt="Pic" src="assets_admin/media/avatars/300-1.jpg" />
+                                <img alt="Pic" src="{{asset('assets_admin/media/avatars/300-1.jpg')}}" />
                             </div>
                         </div>
                         <div class="p-5 rounded bg-light-primary text-gray-900 fw-semibold mw-lg-400px text-end"
@@ -126,7 +126,7 @@
                     <div class="d-flex flex-column align-items-start">
                         <div class="d-flex align-items-center mb-2">
                             <div class="symbol symbol-35px symbol-circle">
-                                <img alt="Pic" src="assets_admin/media/avatars/300-25.jpg" />
+                                <img alt="Pic" src="{{asset('assets_admin/media/avatars/300-25.jpg')}}" />
                             </div>
                             <div class="ms-3">
                                 <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian
@@ -148,7 +148,7 @@
                                 <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary ms-1">You</a>
                             </div>
                             <div class="symbol symbol-35px symbol-circle">
-                                <img alt="Pic" src="assets_admin/media/avatars/300-1.jpg" />
+                                <img alt="Pic" src="{{asset('assets_admin/media/avatars/300-1.jpg')}}" />
                             </div>
                         </div>
                         <div class="p-5 rounded bg-light-primary text-gray-900 fw-semibold mw-lg-400px text-end"
@@ -161,7 +161,7 @@
                     <div class="d-flex flex-column align-items-start">
                         <div class="d-flex align-items-center mb-2">
                             <div class="symbol symbol-35px symbol-circle">
-                                <img alt="Pic" src="assets_admin/media/avatars/300-25.jpg" />
+                                <img alt="Pic" src="{{asset('assets_admin/media/avatars/300-25.jpg')}}" />
                             </div>
                             <div class="ms-3">
                                 <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian
@@ -184,7 +184,7 @@
                                 <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary ms-1">You</a>
                             </div>
                             <div class="symbol symbol-35px symbol-circle">
-                                <img alt="Pic" src="assets_admin/media/avatars/300-1.jpg" />
+                                <img alt="Pic" src="{{asset('assets_admin/media/avatars/300-1.jpg')}}" />
                             </div>
                         </div>
                         <div class="p-5 rounded bg-light-primary text-gray-900 fw-semibold mw-lg-400px text-end"
@@ -197,7 +197,7 @@
                     <div class="d-flex flex-column align-items-start">
                         <div class="d-flex align-items-center mb-2">
                             <div class="symbol symbol-35px symbol-circle">
-                                <img alt="Pic" src="assets_admin/media/avatars/300-25.jpg" />
+                                <img alt="Pic" src="{{asset('assets_admin/media/avatars/300-25.jpg')}}" />
                             </div>
                             <div class="ms-3">
                                 <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian
@@ -220,7 +220,7 @@
                                 <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary ms-1">You</a>
                             </div>
                             <div class="symbol symbol-35px symbol-circle">
-                                <img alt="Pic" src="assets_admin/media/avatars/300-1.jpg" />
+                                <img alt="Pic" src="{{asset('assets_admin/media/avatars/300-1.jpg')}}" />
                             </div>
                         </div>
                         <div class="p-5 rounded bg-light-primary text-gray-900 fw-semibold mw-lg-400px text-end"
@@ -231,7 +231,7 @@
                     <div class="d-flex flex-column align-items-start">
                         <div class="d-flex align-items-center mb-2">
                             <div class="symbol symbol-35px symbol-circle">
-                                <img alt="Pic" src="assets_admin/media/avatars/300-25.jpg" />
+                                <img alt="Pic" src="{{asset('assets_admin/media/avatars/300-25.jpg')}}" />
                             </div>
                             <div class="ms-3">
                                 <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian

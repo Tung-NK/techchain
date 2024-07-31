@@ -1,6 +1,6 @@
 @extends('users.layout.default')
 
-@section('detail')
+@section('content')
     <main class="main-wrapper">
         <!-- Start Shop Area  -->
         <div class="axil-single-product-area axil-section-gap pb--0 bg-color-white">

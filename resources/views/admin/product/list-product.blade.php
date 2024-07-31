@@ -1,4 +1,4 @@
-@extends('admin.layout.default')
+@extends('admin.layout.home')
 
 @section('title')
     @parent Danh sách sản phẩm
@@ -98,3 +98,6 @@
 @push('script')
     
 @endpush
+
+
+

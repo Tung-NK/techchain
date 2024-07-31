@@ -3,8 +3,10 @@
     data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
     <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
         <a href="index.html">
-            <img alt="Logo" src="assets_admin/media/logos/default-dark.svg" class="h-25px app-sidebar-logo-default" />
-            <img alt="Logo" src="assets_admin/media/logos/default-small.svg" class="h-20px app-sidebar-logo-minimize" />
+            <img alt="Logo" src="{{ asset('assets_admin/media/logos/default-dark.svg') }}"
+                class="h-25px app-sidebar-logo-default" />
+            <img alt="Logo" src="{{ asset('assets_admin/media/logos/default-small.svg') }}"
+                class="h-20px app-sidebar-logo-minimize" />
         </a>
         <div id="kt_app_sidebar_toggle"
             class="app-sidebar-toggle btn btn-icon btn-shadow btn-sm btn-color-muted btn-active-color-primary h-30px w-30px position-absolute top-50 start-100 translate-middle rotate"
@@ -87,6 +89,29 @@
                                     <span class="menu-title">Tài chính</span>
                                 </a>
                             </div>
+                        </div>
+                    </div>
+
+                    <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+                        <span class="menu-link"><span class="menu-icon"><i class="ki-duotone ki-abstract-28 fs-2"><span
+                                        class="path1"></span><span class="path2"></span></i></span><span
+                                class="menu-title">Quản lí tài khoản</span><span class="menu-arrow"></span></span>
+                        <div class="menu-sub menu-sub-accordion">
+                            <div class="menu-sub menu-sub-accordion">
+                                <div class="menu-item"><a class="menu-link active" href=""><span
+                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
+                                            class="menu-title">Danh sách tài khoản</span></a></div>
+                                <!--end:Menu item-->
+                                <div class="menu-item"><a class="menu-link" href="view.html"><span
+                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
+                                            class="menu-title">Danh sách role</span></a></div>
+                                <!--end:Menu item-->
+                                <div class="menu-item"><a class="menu-link" href="../permissions.html"><span
+                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
+                                            class="menu-title">Permissions</span></a>
+                                </div>
+                            </div><!--end:Menu sub-->
+
                         </div>
                     </div>
                 </div>
