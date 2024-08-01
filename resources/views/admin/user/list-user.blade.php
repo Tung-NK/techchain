@@ -8,6 +8,12 @@
     <div id="kt_app_content" class="app-content  flex-column-fluid ">
         <!--begin::Content container-->
         <div id="kt_app_content_container" class="app-container  container-xxl ">
+            @if (session('mess'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>{{ session('mess') }}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <!--begin::Card-->
             <div class="card">
                 <!--begin::Card header-->
@@ -100,8 +106,7 @@
                             <!--end::Export-->
 
                             <!--begin::Add user-->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#kt_modal_add_user">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUser">
                                 <i class="ki-duotone ki-plus fs-2"></i> Add User
                             </button>
                             <!--end::Add user-->
@@ -220,323 +225,10 @@
                             <!--end::Modal dialog-->
                         </div>
                         <!--end::Modal - New Card-->
-
-                        <!--begin::Modal - Add task-->
-                        <div class="modal fade" id="kt_modal_add_user" tabindex="-1" aria-hidden="true">
-                            <!--begin::Modal dialog-->
-                            <div class="modal-dialog modal-dialog-centered mw-650px">
-                                <!--begin::Modal content-->
-                                <div class="modal-content">
-                                    <!--begin::Modal header-->
-                                    <div class="modal-header" id="kt_modal_add_user_header">
-                                        <!--begin::Modal title-->
-                                        <h2 class="fw-bold">Add User</h2>
-                                        <!--end::Modal title-->
-
-                                        <!--begin::Close-->
-                                        <div class="btn btn-icon btn-sm btn-active-icon-primary"
-                                            data-kt-users-modal-action="close">
-                                            <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span
-                                                    class="path2"></span></i>
-                                        </div>
-                                        <!--end::Close-->
-                                    </div>
-                                    <!--end::Modal header-->
-
-                                    <!--begin::Modal body-->
-                                    <div class="modal-body px-5 my-7">
-                                        <!--begin::Form-->
-                                        <form id="kt_modal_add_user_form" class="form" action="#">
-                                            <!--begin::Scroll-->
-                                            <div class="d-flex flex-column scroll-y px-5 px-lg-10"
-                                                id="kt_modal_add_user_scroll" data-kt-scroll="true"
-                                                data-kt-scroll-activate="true" data-kt-scroll-max-height="auto"
-                                                data-kt-scroll-dependencies="#kt_modal_add_user_header"
-                                                data-kt-scroll-wrappers="#kt_modal_add_user_scroll"
-                                                data-kt-scroll-offset="300px">
-                                                <!--begin::Input group-->
-                                                <div class="fv-row mb-7">
-                                                    <!--begin::Label-->
-                                                    <label class="d-block fw-semibold fs-6 mb-5">Avatar</label>
-                                                    <!--end::Label-->
-
-
-                                                    <!--begin::Image placeholder-->
-                                                    <style>
-                                                        .image-input-placeholder {
-                                                            background-image: url('../../../assets/media/svg/files/blank-image.svg');
-                                                        }
-
-                                                        [data-bs-theme="dark"] .image-input-placeholder {
-                                                            background-image: url('../../../assets/media/svg/files/blank-image-dark.svg');
-                                                        }
-                                                    </style>
-                                                    <!--end::Image placeholder-->
-                                                    <!--begin::Image input-->
-                                                    <div class="image-input image-input-outline image-input-placeholder"
-                                                        data-kt-image-input="true">
-                                                        <!--begin::Preview existing avatar-->
-                                                        <div class="image-input-wrapper w-125px h-125px"
-                                                            style="background-image: url(../../../assets/media/avatars/300-6.jpg);">
-                                                        </div>
-                                                        <!--end::Preview existing avatar-->
-
-                                                        <!--begin::Label-->
-                                                        <label
-                                                            class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                            data-kt-image-input-action="change" data-bs-toggle="tooltip"
-                                                            title="Change avatar">
-                                                            <i class="ki-duotone ki-pencil fs-7"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                            <!--begin::Inputs-->
-                                                            <input type="file" name="avatar"
-                                                                accept=".png, .jpg, .jpeg" />
-                                                            <input type="hidden" name="avatar_remove" />
-                                                            <!--end::Inputs-->
-                                                        </label>
-                                                        <!--end::Label-->
-
-                                                        <!--begin::Cancel-->
-                                                        <span
-                                                            class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                            data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
-                                                            title="Cancel avatar">
-                                                            <i class="ki-duotone ki-cross fs-2"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </span>
-                                                        <!--end::Cancel-->
-
-                                                        <!--begin::Remove-->
-                                                        <span
-                                                            class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                            data-kt-image-input-action="remove" data-bs-toggle="tooltip"
-                                                            title="Remove avatar">
-                                                            <i class="ki-duotone ki-cross fs-2"><span
-                                                                    class="path1"></span><span class="path2"></span></i>
-                                                        </span>
-                                                        <!--end::Remove-->
-                                                    </div>
-                                                    <!--end::Image input-->
-
-                                                    <!--begin::Hint-->
-                                                    <div class="form-text">Allowed file types: png,
-                                                        jpg, jpeg.</div>
-                                                    <!--end::Hint-->
-                                                </div>
-                                                <!--end::Input group-->
-
-                                                <!--begin::Input group-->
-                                                <div class="fv-row mb-7">
-                                                    <!--begin::Label-->
-                                                    <label class="required fw-semibold fs-6 mb-2">Full
-                                                        Name</label>
-                                                    <!--end::Label-->
-
-                                                    <!--begin::Input-->
-                                                    <input type="text" name="user_name"
-                                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                                        placeholder="Full name" value="Emma Smith" />
-                                                    <!--end::Input-->
-                                                </div>
-                                                <!--end::Input group-->
-
-                                                <!--begin::Input group-->
-                                                <div class="fv-row mb-7">
-                                                    <!--begin::Label-->
-                                                    <label class="required fw-semibold fs-6 mb-2">Email</label>
-                                                    <!--end::Label-->
-
-                                                    <!--begin::Input-->
-                                                    <input type="email" name="user_email"
-                                                        class="form-control form-control-solid mb-3 mb-lg-0"
-                                                        placeholder="example@domain.com" value="smith@kpmg.com" />
-                                                    <!--end::Input-->
-                                                </div>
-                                                <!--end::Input group-->
-
-                                                <!--begin::Input group-->
-                                                <div class="mb-5">
-                                                    <!--begin::Label-->
-                                                    <label class="required fw-semibold fs-6 mb-5">Role</label>
-                                                    <!--end::Label-->
-
-                                                    <!--begin::Roles-->
-                                                    <!--begin::Input row-->
-                                                    <div class="d-flex fv-row">
-                                                        <!--begin::Radio-->
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <!--begin::Input-->
-                                                            <input class="form-check-input me-3" name="user_role"
-                                                                type="radio" value="0"
-                                                                id="kt_modal_update_role_option_0" checked='checked' />
-                                                            <!--end::Input-->
-
-                                                            <!--begin::Label-->
-                                                            <label class="form-check-label"
-                                                                for="kt_modal_update_role_option_0">
-                                                                <div class="fw-bold text-gray-800">
-                                                                    Administrator</div>
-                                                                <div class="text-gray-600">Best for
-                                                                    business owners and company
-                                                                    administrators</div>
-                                                            </label>
-                                                            <!--end::Label-->
-                                                        </div>
-                                                        <!--end::Radio-->
-                                                    </div>
-                                                    <!--end::Input row-->
-
-                                                    <div class='separator separator-dashed my-5'>
-                                                    </div> <!--begin::Input row-->
-                                                    <div class="d-flex fv-row">
-                                                        <!--begin::Radio-->
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <!--begin::Input-->
-                                                            <input class="form-check-input me-3" name="user_role"
-                                                                type="radio" value="1"
-                                                                id="kt_modal_update_role_option_1" />
-                                                            <!--end::Input-->
-
-                                                            <!--begin::Label-->
-                                                            <label class="form-check-label"
-                                                                for="kt_modal_update_role_option_1">
-                                                                <div class="fw-bold text-gray-800">
-                                                                    Developer</div>
-                                                                <div class="text-gray-600">Best for
-                                                                    developers or people primarily
-                                                                    using the API</div>
-                                                            </label>
-                                                            <!--end::Label-->
-                                                        </div>
-                                                        <!--end::Radio-->
-                                                    </div>
-                                                    <!--end::Input row-->
-
-                                                    <div class='separator separator-dashed my-5'>
-                                                    </div> <!--begin::Input row-->
-                                                    <div class="d-flex fv-row">
-                                                        <!--begin::Radio-->
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <!--begin::Input-->
-                                                            <input class="form-check-input me-3" name="user_role"
-                                                                type="radio" value="2"
-                                                                id="kt_modal_update_role_option_2" />
-                                                            <!--end::Input-->
-
-                                                            <!--begin::Label-->
-                                                            <label class="form-check-label"
-                                                                for="kt_modal_update_role_option_2">
-                                                                <div class="fw-bold text-gray-800">
-                                                                    Analyst</div>
-                                                                <div class="text-gray-600">Best for
-                                                                    people who need full access to
-                                                                    analytics data, but don't need
-                                                                    to update business settings
-                                                                </div>
-                                                            </label>
-                                                            <!--end::Label-->
-                                                        </div>
-                                                        <!--end::Radio-->
-                                                    </div>
-                                                    <!--end::Input row-->
-
-                                                    <div class='separator separator-dashed my-5'>
-                                                    </div> <!--begin::Input row-->
-                                                    <div class="d-flex fv-row">
-                                                        <!--begin::Radio-->
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <!--begin::Input-->
-                                                            <input class="form-check-input me-3" name="user_role"
-                                                                type="radio" value="3"
-                                                                id="kt_modal_update_role_option_3" />
-                                                            <!--end::Input-->
-
-                                                            <!--begin::Label-->
-                                                            <label class="form-check-label"
-                                                                for="kt_modal_update_role_option_3">
-                                                                <div class="fw-bold text-gray-800">
-                                                                    Support</div>
-                                                                <div class="text-gray-600">Best for
-                                                                    employees who regularly refund
-                                                                    payments and respond to disputes
-                                                                </div>
-                                                            </label>
-                                                            <!--end::Label-->
-                                                        </div>
-                                                        <!--end::Radio-->
-                                                    </div>
-                                                    <!--end::Input row-->
-
-                                                    <div class='separator separator-dashed my-5'>
-                                                    </div> <!--begin::Input row-->
-                                                    <div class="d-flex fv-row">
-                                                        <!--begin::Radio-->
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <!--begin::Input-->
-                                                            <input class="form-check-input me-3" name="user_role"
-                                                                type="radio" value="4"
-                                                                id="kt_modal_update_role_option_4" />
-                                                            <!--end::Input-->
-
-                                                            <!--begin::Label-->
-                                                            <label class="form-check-label"
-                                                                for="kt_modal_update_role_option_4">
-                                                                <div class="fw-bold text-gray-800">
-                                                                    Trial</div>
-                                                                <div class="text-gray-600">Best for
-                                                                    people who need to preview
-                                                                    content data, but don't need to
-                                                                    make any updates</div>
-                                                            </label>
-                                                            <!--end::Label-->
-                                                        </div>
-                                                        <!--end::Radio-->
-                                                    </div>
-                                                    <!--end::Input row-->
-
-                                                    <!--end::Roles-->
-                                                </div>
-                                                <!--end::Input group-->
-                                            </div>
-                                            <!--end::Scroll-->
-
-                                            <!--begin::Actions-->
-                                            <div class="text-center pt-10">
-                                                <button type="reset" class="btn btn-light me-3"
-                                                    data-kt-users-modal-action="cancel">
-                                                    Discard
-                                                </button>
-
-                                                <button type="submit" class="btn btn-primary"
-                                                    data-kt-users-modal-action="submit">
-                                                    <span class="indicator-label">
-                                                        Submit
-                                                    </span>
-                                                    <span class="indicator-progress">
-                                                        Please wait... <span
-                                                            class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                            <!--end::Actions-->
-                                        </form>
-                                        <!--end::Form-->
-                                    </div>
-                                    <!--end::Modal body-->
-                                </div>
-                                <!--end::Modal content-->
-                            </div>
-                            <!--end::Modal dialog-->
-                        </div>
-                        <!--end::Modal - Add task-->
                     </div>
-                    <!--end::Card toolbar-->
                 </div>
-                <!--end::Card header-->
 
-                <!--begin::Card body-->
                 <div class="card-body py-4">
-
                     <!--begin::Table-->
                     <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
                         <thead>
@@ -547,10 +239,9 @@
                                             data-kt-check-target="#kt_table_users .form-check-input" value="1" />
                                     </div>
                                 </th>
+                                <th class="min-w-125px text-center">ID</th>
                                 <th class="min-w-125px">User</th>
                                 <th class="min-w-125px">Role</th>
-                                <th class="min-w-125px">Last login</th>
-                                <th class="min-w-125px">Two-step </th>
                                 <th class="min-w-125px">Joined Date</th>
                                 <th class="text-end min-w-100px">Actions</th>
                             </tr>
@@ -618,205 +309,379 @@
                                     <!--end::Menu-->
                                 </td>
                             </tr> --}}
-                            <tr>
-                                <td>
-                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" value="1" />
-                                    </div>
-                                </td>
-                                <td class="d-flex align-items-center">
-                                    <!--begin:: Avatar -->
-                                    <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                        <a href="view.html">
-                                            <div class="symbol-label">
-                                                <img src="../../../assets/media/avatars/300-1.jpg" alt="Max Smith"
-                                                    class="w-100" />
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!--end::Avatar-->
-                                    <!--begin::User details-->
-                                    <div class="d-flex flex-column">
-                                        <a href="view.html" class="text-gray-800 text-hover-primary mb-1">Max
-                                            Smith</a>
-                                        <span>max@kt.com</span>
-                                    </div>
-                                    <!--begin::User details-->
-                                </td>
-                                <td>
-                                    Developer </td>
-                                <td>
-                                    <div class="badge badge-light fw-bold">3 days ago</div>
-                                </td>
-                                <td>
-                                </td>
-                                <td>
-                                    20 Dec 2024, 10:30 am </td>
-                                <td class="text-end">
-                                    <a href="#"
-                                        class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm"
-                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                        Actions
-                                        <i class="ki-duotone ki-down fs-5 ms-1"></i> </a>
-                                    <!--begin::Menu-->
-                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
-                                        data-kt-menu="true">
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="view.html" class="menu-link px-3">
-                                                Edit
-                                            </a>
+                            @foreach ($listUser as $key => $value)
+                                <tr>
+                                    <td>
+                                        <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                            <input class="form-check-input" type="checkbox" value="1" />
                                         </div>
-                                        <!--end::Menu item-->
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="badge badge-light fw-bold">{{ $key + 1 }}</div>
+                                    </td>
+                                    <td class="d-flex align-items-center">
 
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3"
-                                                data-kt-users-table-filter="delete_row">
-                                                Delete
+                                        <!--begin:: Avatar -->
+                                        <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
+                                            <a href="view.html">
+                                                <div class="symbol-label">
+                                                    <img src="{{ asset($value->image) }}" alt="{{ $value->name }}"
+                                                        class="w-100" />
+                                                </div>
                                             </a>
                                         </div>
-                                        <!--end::Menu item-->
-                                    </div>
-                                    <!--end::Menu-->
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" value="1" />
-                                    </div>
-                                </td>
-                                <td class="d-flex align-items-center">
-                                    <!--begin:: Avatar -->
-                                    <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                        <a href="view.html">
-                                            <div class="symbol-label">
-                                                <img src="../../../assets/media/avatars/300-5.jpg" alt="Sean Bean"
-                                                    class="w-100" />
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!--end::Avatar-->
-                                    <!--begin::User details-->
-                                    <div class="d-flex flex-column">
-                                        <a href="view.html" class="text-gray-800 text-hover-primary mb-1">Sean
-                                            Bean</a>
-                                        <span>sean@dellito.com</span>
-                                    </div>
-                                    <!--begin::User details-->
-                                </td>
-                                <td>
-                                    Support </td>
-                                <td>
-                                    <div class="badge badge-light fw-bold">5 hours ago</div>
-                                </td>
-                                <td>
-                                    <div class="badge badge-light-success fw-bold">Enabled</div>
-                                </td>
-                                <td>
-                                    15 Apr 2024, 6:05 pm </td>
-                                <td class="text-end">
-                                    <a href="#"
-                                        class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm"
-                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                        Actions
-                                        <i class="ki-duotone ki-down fs-5 ms-1"></i> </a>
-                                    <!--begin::Menu-->
-                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
-                                        data-kt-menu="true">
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="view.html" class="menu-link px-3">
-                                                Edit
-                                            </a>
+                                        <!--end::Avatar-->
+                                        <!--begin::User details-->
+                                        <div class="d-flex flex-column">
+                                            <a href="view.html"
+                                                class="text-gray-800 text-hover-primary mb-1">{{ $value->name }}</a>
+                                            <span>{{ $value->email }}</span>
                                         </div>
-                                        <!--end::Menu item-->
+                                    </td>
+                                    <td>{{ $value->role == '1' ? 'Admin' : 'User' }}</td>
 
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3"
-                                                data-kt-users-table-filter="delete_row">
-                                                Delete
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                    </div>
-                                    <!--end::Menu-->
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" value="1" />
-                                    </div>
-                                </td>
-                                <td class="d-flex align-items-center">
-                                    <!--begin:: Avatar -->
-                                    <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                        <a href="view.html">
-                                            <div class="symbol-label">
-                                                <img src="../../../assets/media/avatars/300-25.jpg" alt="Brian Cox"
-                                                    class="w-100" />
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <!--end::Avatar-->
-                                    <!--begin::User details-->
-                                    <div class="d-flex flex-column">
-                                        <a href="view.html" class="text-gray-800 text-hover-primary mb-1">Brian
-                                            Cox</a>
-                                        <span>brian@exchange.com</span>
-                                    </div>
-                                    <!--begin::User details-->
-                                </td>
-                                <td>
-                                    Developer </td>
-                                <td>
-                                    <div class="badge badge-light fw-bold">2 days ago</div>
-                                </td>
-                                <td>
-                                    <div class="badge badge-light-success fw-bold">Enabled</div>
-                                </td>
-                                <td>
-                                    22 Sep 2024, 5:20 pm </td>
-                                <td class="text-end">
-                                    <a href="#"
-                                        class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm"
-                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                        Actions
-                                        <i class="ki-duotone ki-down fs-5 ms-1"></i> </a>
-                                    <!--begin::Menu-->
-                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
-                                        data-kt-menu="true">
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="view.html" class="menu-link px-3">
-                                                Edit
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
+                                    <td>{{ $value->created_at }} </td>
+                                    <td class="text-end">
+                                        <a href="#"
+                                            class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm"
+                                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                            Actions
+                                            <i class="ki-duotone ki-down fs-5 ms-1"></i> </a>
 
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3"
-                                                data-kt-users-table-filter="delete_row">
-                                                Delete
-                                            </a>
+                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
+                                            data-kt-menu="true">
+                                            <!--begin::Menu item-->
+                                            <div class="menu-item px-3">
+                                                <a data-id="{{ $value->id }}" href="view.html" class="menu-link px-3"
+                                                    data-bs-toggle="modal" data-bs-target="#modalEdit">
+                                                    Edit
+                                                </a>
+                                            </div>
+
+                                            <div class="menu-item px-3">
+                                                <a href="#" data-id="{{ $value->id }}" class="menu-link px-3"
+                                                    data-bs-toggle="modal" data-bs-target="#modalDelete">
+                                                    Delete
+                                                </a>
+                                            </div>
                                         </div>
-                                        <!--end::Menu item-->
-                                    </div>
-                                    <!--end::Menu-->
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
-                    <!--end::Table-->
                 </div>
-                <!--end::Card body-->
             </div>
-            <!--end::Card-->
         </div>
-        <!--end::Content container-->
+    </div>
+
+    {{-- Modal Add --}}
+    <div class="modal fade" id="addUser" tabindex="-1" aria-labelledby="addUserLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="addUserLabel">Thêm Người Dùng</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body px-5 my-7">
+                        <form id="kt_modal_add_user_form" class="form" action="{{ route('users.addUser') }}"
+                            method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="d-flex flex-column scroll-y px-5 px-lg-10" id="kt_modal_add_user_scroll"
+                                data-kt-scroll="true" data-kt-scroll-activate="true" data-kt-scroll-max-height="auto"
+                                data-kt-scroll-dependencies="#kt_modal_add_user_header"
+                                data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
+                                <!--begin::Input group-->
+                                <div class="fv-row mb-7">
+                                    <!--begin::Label-->
+                                    <label class="d-block fw-semibold fs-6 mb-5">Avatar</label>
+                                    <div class="image-input image-input-outline image-input-placeholder"
+                                        data-kt-image-input="true">
+                                        <div class="image-input-wrapper w-125px h-125px"></div>
+
+                                        <label
+                                            class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                            data-kt-image-input-action="change" data-bs-toggle="tooltip"
+                                            title="Change avatar">
+                                            <i class="ki-duotone ki-pencil fs-7"><span class="path1"></span><span
+                                                    class="path2"></span></i>
+                                            <input type="file" name="image" id="image">
+                                            <input type="hidden" name="avatar_remove" />
+                                        </label>
+
+                                        <span
+                                            class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                            data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
+                                            title="Cancel avatar">
+                                            <i class="ki-duotone ki-cross fs-2"><span class="path1"></span><span
+                                                    class="path2"></span></i>
+                                        </span>
+
+                                        <span
+                                            class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                            data-kt-image-input-action="remove" data-bs-toggle="tooltip"
+                                            title="Remove avatar">
+                                            <i class="ki-duotone ki-cross fs-2"><span class="path1"></span><span
+                                                    class="path2"></span></i>
+                                        </span>
+                                    </div>
+
+                                    <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
+                                </div>
+
+                                <div class="fv-row mb-7">
+                                    <label class="required fw-semibold fs-6 mb-2">Full Name</label>
+
+                                    <input type="text" name="name" id="name"
+                                        class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Full name">
+
+                                    @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <!--end::Input group-->
+
+                                <!--begin::Input group-->
+                                <div class="fv-row mb-7">
+                                    <label class="required fw-semibold fs-6 mb-2">Email</label>
+
+                                    <input type="email" name="email" id="email"
+                                        class="form-control form-control-solid mb-3 mb-lg-0"
+                                        placeholder="example@domain.com">
+
+                                    @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <!--end::Input group-->
+
+                                <!--begin::Input group-->
+                                <div class="fv-row mb-7">
+                                    <label class="required fw-semibold fs-6 mb-2">Password</label>
+
+                                    <input type="password" name="password" id="password"
+                                        class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Password">
+
+                                    @error('password')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <!--end::Input group-->
+
+                                <!--begin::Input group-->
+                                <div class="mb-5">
+                                    <label class="required fw-semibold fs-6 mb-5">Role</label>
+                                    <select class="form-select form-select-solid fw-bold" name="role" id="role"
+                                        data-kt-select2="true" data-placeholder="Select option" data-hide-search="true">
+                                        <option value="1">Admin</option>
+                                        <option value="2">User</option>
+                                    </select>
+
+                                    @error('role')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="text-center pt-10">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+
+                                <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
+                                    <span class="indicator-label">
+                                        Submit
+                                    </span>
+                                    <span class="indicator-progress">
+                                        Please wait... <span
+                                            class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal Delete --}}
+    <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="modalDeleteLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalDeleteLabel">Warning</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn chắc chắn muốn xoá chứ
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                    <form action="" id="confirmDelete" method="post">
+                        @method('delete')
+                        @csrf
+                        <button class="btn btn-danger">Xoá</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Modal Update --}}
+    <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEditLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalEditLabel">Sửa</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="kt_modal_update_user_form" class="form" action="{{route('users.updateUser')}}" method="post"
+                        enctype="multipart/form-data">
+                        @method('patch')
+                        @csrf
+                        <input type="hidden" id="idUserUpdate" name="idUser">
+
+                        <div class="d-flex flex-column scroll-y px-5 px-lg-10" id="kt_modal_add_user_scroll"
+                            data-kt-scroll="true" data-kt-scroll-activate="true" data-kt-scroll-max-height="auto"
+                            data-kt-scroll-dependencies="#kt_modal_add_user_header"
+                            data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-7">
+                                <!--begin::Label-->
+                                <label class="d-block fw-semibold fs-6 mb-5">Avatar</label>
+                                <div class="image-input image-input-outline image-input-placeholder"
+                                    data-kt-image-input="true">
+                                    <div class="image-input-wrapper w-125px h-125px"></div>
+
+                                    <label
+                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                        data-kt-image-input-action="change" data-bs-toggle="tooltip"
+                                        title="Change avatar">
+                                        <i class="ki-duotone ki-pencil fs-7"><span class="path1"></span><span
+                                                class="path2"></span></i>
+                                        <input type="file" name="image" id="imageUpdate">
+                                        <input type="hidden" name="avatar_remove" />
+                                    </label>
+
+                                    <span
+                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                        data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
+                                        title="Cancel avatar">
+                                        <i class="ki-duotone ki-cross fs-2"><span class="path1"></span><span
+                                                class="path2"></span></i>
+                                    </span>
+
+                                    <span
+                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                        data-kt-image-input-action="remove" data-bs-toggle="tooltip"
+                                        title="Remove avatar">
+                                        <i class="ki-duotone ki-cross fs-2"><span class="path1"></span><span
+                                                class="path2"></span></i>
+                                    </span>
+                                </div>
+
+                                <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
+                            </div>
+
+                            <div class="fv-row mb-7">
+                                <label class="required fw-semibold fs-6 mb-2">Full Name</label>
+
+                                <input type="text" name="name" id="nameUpdate"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Full name">
+
+                                @error('name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <!--end::Input group-->
+
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-7">
+                                <label class="required fw-semibold fs-6 mb-2">Email</label>
+
+                                <input type="email" name="email" id="emailUpdate"
+                                    class="form-control form-control-solid mb-3 mb-lg-0" placeholder="example@domain.com">
+
+                                @error('email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <!--end::Input group-->
+
+                            <!--begin::Input group-->
+                            <div class="mb-5">
+                                <label class="required fw-semibold fs-6 mb-5">Role</label>
+                                <select class="form-select form-select-solid fw-bold" name="role" id="roleUpdate"
+                                    data-kt-select2="true" data-placeholder="Select option" data-hide-search="true">
+                                    <option value="1">Admin</option>
+                                    <option value="2">User</option>
+                                </select>
+
+                                @error('role')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="text-center pt-10">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+
+                            <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
+                                <span class="indicator-label">
+                                    Chỉnh sửa
+                                </span>
+                                <span class="indicator-progress">
+                                    Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        const modalDelete = document.getElementById('modalDelete')
+        if (modalDelete) {
+            modalDelete.addEventListener('show.bs.modal', event => {
+                const button = event.relatedTarget
+                // Extract info from data-bs-* attributes
+                const idUser = button.getAttribute('data-id')
+
+                let confirmDelete = document.querySelector('#confirmDelete');
+                confirmDelete.setAttribute('action', '{{ route('users.deleteUser') }}?id=' + idUser)
+            })
+        }
+
+        const modalEdit = document.getElementById('modalEdit')
+        if (modalEdit) {
+            modalEdit.addEventListener('show.bs.modal', event => {
+                const button = event.relatedTarget
+                const id = button.getAttribute('data-id')
+
+                // Call Api
+                let url = "{{ route('users.detailUser') }}?id=" + id;
+
+                fetch(url, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                    }
+                }).then((reponse) => reponse.json())
+                .then((data) => {
+                    console.log(data);
+                    document.querySelector('#idUserUpdate').value = data.id
+                    document.querySelector('#nameUpdate').value = data.name
+                    document.querySelector('#emailUpdate').value = data.email
+                    document.querySelector('#roleUpdate').value = data.role                    
+                    document.querySelector('#imageUpdate').value = data.image                    
+                })
+            })
+        }
+    </script>
+@endpush

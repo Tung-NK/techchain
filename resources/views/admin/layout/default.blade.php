@@ -4,20 +4,22 @@
 <head>
     <title>
         @section('title')
-            Techchain | 
+            Techchain |
         @show
     </title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
-    <link rel="shortcut icon" href="{{asset('assets_admin/media/logos/favicon.ico')}}" />
+    <link rel="shortcut icon" href="{{ asset('assets_admin/media/logos/favicon.ico') }}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
-    <link href="{{asset('assets_admin/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('assets_admin/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
-    <style href="{{asset('assets_admin/css/custom.css')}}"></style>
+    <link href="{{ asset('assets_admin/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets_admin/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+    <style href="{{ asset('assets_admin/css/custom.css') }}"></style>
 
-    @stack('style') {{-- chèn css riêng vào vị trí có tên style--}}
+
+    <meta name="csrf-token" content="{{ csrf_token() }} " />
+    @stack('style') {{-- chèn css riêng vào vị trí có tên style --}}
 </head>
 
 
@@ -31,8 +33,8 @@
 
     @stack('script')
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
-    <script src="{{asset('assets_admin/plugins/global/plugins.bundle.js')}}"></script>
-    <script src="{{asset('assets_admin/js/scripts.bundle.js')}}"></script>
+    <script src="{{ asset('assets_admin/plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ asset('assets_admin/js/scripts.bundle.js') }}"></script>
     <!--end::Global Javascript Bundle-->
 
 

@@ -231,10 +231,10 @@
                             <div class="menu-content d-flex align-items-center px-3">
                                 <div class="d-flex flex-column">
                                     <div class="fw-bold d-flex align-items-center fs-5">
-                                        Robert Fox
+                                        {{ Auth::user()->name }}
                                     </div>
                                     <a href="#"
-                                        class="fw-semibold text-muted text-hover-primary fs-7">robert@kt.com</a>
+                                        class="fw-semibold text-muted text-hover-primary fs-7">{{ Auth::user()->email }}</a>
                                 </div>
                             </div>
                         </div>
