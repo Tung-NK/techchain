@@ -11,10 +11,22 @@ class Product extends Model
 
     protected $table = 'product';
 
-    protected $fillable = [ // duoc tuong tac vao nhung truong gi
+    protected $primaryKey = 'id';
+
+    protected $fillable = [ 
+        'id',
         'name',
         'price',
         'description',
+        'created_at',
         'category_id',
     ];
+
+    public function images(){
+        return $this -> hasMany(ProductImage::class, 'product_id');
+    }
+
+    public function category(){
+        return $this -> belongsTo(Category::class);
+    }
 }

@@ -11,7 +11,16 @@ class Category extends Model
 
     protected $table = 'category';
 
-    protected $fillable = [ // duoc tuong tac vao nhung truong gi
+    protected $primaryKey = 'id';
+
+    protected $fillable = [
+        'id',
         'name',
+        'created_at'
     ];
+
+    public function product()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

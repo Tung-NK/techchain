@@ -1,5 +1,7 @@
 @extends('admin.layout.default')
 
+@stack('style')
+
 @section('main')
     <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
         <!-- Page -->

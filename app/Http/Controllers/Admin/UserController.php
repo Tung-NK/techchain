@@ -77,7 +77,7 @@ class UserController extends Controller
 
     public function updateUser(Request $req)
     {
-        $req -> validate([
+        $req->validate([
             'idUser' => 'required',
             'name' => 'required|string',
             'email' => 'required|email',

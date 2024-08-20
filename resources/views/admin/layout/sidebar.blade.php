@@ -43,7 +43,7 @@
                         </a>
                     </div>
 
-
+                    {{-- Dashboars --}}
                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                         <span class="menu-link">
                             <span class="menu-icon">
@@ -92,15 +92,16 @@
                         </div>
                     </div>
 
+                    {{-- User --}}
                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                         <span class="menu-link"><span class="menu-icon"><i class="ki-duotone ki-abstract-28 fs-2"><span
                                         class="path1"></span><span class="path2"></span></i></span><span
                                 class="menu-title">Quản lí tài khoản</span><span class="menu-arrow"></span></span>
                         <div class="menu-sub menu-sub-accordion">
                             <div class="menu-sub menu-sub-accordion">
-                                <div class="menu-item"><a class="menu-link active"
-                                        href="{{ route('users.listUser') }}"><span class="menu-bullet"><span
-                                                class="bullet bullet-dot"></span></span><span class="menu-title">Danh
+                                <div class="menu-item"><a class="menu-link" href="{{ route('users.listUser') }}"><span
+                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
+                                            class="menu-title">Danh
                                             sách tài khoản</span></a></div>
                                 <!--end:Menu item-->
                                 <div class="menu-item"><a class="menu-link" href="view.html"><span
@@ -113,6 +114,58 @@
                                 </div>
                             </div><!--end:Menu sub-->
 
+                        </div>
+                    </div>
+
+                    {{-- Category --}}
+                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                        <span class="menu-link"><span class="menu-icon">
+                                <i class="ki-duotone ki-abstract-41 fs-2"><span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i></span><span class="menu-title">Quản lí danh mục</span>
+                            <span class="menu-arrow"></span></span>
+                        <div class="menu-sub menu-sub-accordion" kt-hidden-height="334"
+                            style="display: none; overflow: hidden;">
+                            <div class="menu-item">
+                                <a class="menu-link" href="{{ route('categorys.listCate') }}">
+                                    <span class="menu-bullet"><span class="bullet bullet-dot">
+                                        </span></span><span class="menu-title">Danh sách danh mục</span></a>
+                            </div>
+                            <div class="menu-item">
+                                <a class="menu-link" href="{{ route('categorys.create') }}">
+                                    <span class="menu-bullet"><span class="bullet bullet-dot">
+                                        </span></span><span class="menu-title">Thêm danh mục</span></a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    {{-- product --}}
+                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                        <span class="menu-link">
+                            <span class="menu-icon">
+                                <i class="ki-duotone ki-basket fs-2">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i>
+                            </span>
+                            <span class="menu-title">Quản lí sản phẩm</span>
+                            <span class="menu-arrow"></span>
+                        </span>
+                        <div class="menu-sub menu-sub-accordion" kt-hidden-height="167"
+                            style="display: none; overflow: hidden;">
+                            <div class="menu-item">
+                                <a class="menu-link" href="{{ route('products.index') }}">
+                                    <span class="menu-bullet"><span class="bullet bullet-dot">
+                                        </span>
+                                    </span><span class="menu-title">Danh sách sản phẩm</span>
+                                </a>
+                                <a class="menu-link" href="{{ route('products.create') }}">
+                                    <span class="menu-bullet"><span class="bullet bullet-dot">
+                                        </span>
+                                    </span><span class="menu-title">Thêm mới sản phẩm</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

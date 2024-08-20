@@ -9,11 +9,19 @@ class ProductImage extends Model
 {
     use HasFactory;
 
-    protected $table = 'product_comment';
+    protected $table = 'product_image';
 
-    protected $fillable = [ // duoc tuong tac vao nhung truong gi
+    protected $primaryKey = 'id';
+
+    protected $fillable = [
+        'id',
         'product_id',
-        'image_url ',
+        'image_url',
         'image_type',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
 }
